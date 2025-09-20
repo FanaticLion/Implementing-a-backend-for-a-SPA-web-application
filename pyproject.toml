@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "pythonproject15"
+version = "0.1.0"
+description = "Django backend for habit tracker"
+authors = ["fantastiction <den20020805@gmail.com>"]
+readme = "README.md"
+packages = [{include = "config"}]
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+Django = "4.2.7"
+djangorestframework = "3.14.0"
+djangorestframework-simplejwt = "5.3.0"
+django-cors-headers = "4.3.1"
+celery = "5.3.4"
+redis = "5.0.1"
+python-telegram-bot = "20.7"
+python-dotenv = "1.0.0"
+django-celery-beat = "2.5.0"
+drf-spectacular = "^0.28.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-django = "^4.5.2"
+pytest-cov = "^4.1.0"
+flake8 = "^6.0.0"
+black = "^23.7.0"
+isort = "^5.12.0"
+factory-boy = "^3.2.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

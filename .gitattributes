@@ -1,0 +1,33 @@
+# Automatic line ending normalization
+* text=auto
+
+# Explicitly normalize these files to LF
+*.py text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.txt text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+
+# These files should have CRLF line endings on Windows
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files should not be modified
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.exe binary
+
+# Git related files
+.gitattributes text eol=lf
+.gitignore text eol=lf
+
+# IDE files (if you decide to commit them)
+.idea/* text eol=lf
