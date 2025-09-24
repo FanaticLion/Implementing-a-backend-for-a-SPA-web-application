@@ -4,8 +4,10 @@ from .models import User
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
-    list_display = ('username', 'email', 'telegram_chat_id', 'is_staff')
+    list_display = ('username', 'email', 'telegram_chat_id', 'phone', 'is_staff')
     list_filter = ('is_staff', 'is_superuser', 'is_active')
     fieldsets = UserAdmin.fieldsets + (
-        ('Telegram', {'fields': ('telegram_chat_id',)}),
+        ('Дополнительная информация', {
+            'fields': ('telegram_chat_id', 'phone')
+        }),
     )
