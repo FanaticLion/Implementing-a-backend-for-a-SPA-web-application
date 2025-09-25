@@ -1,12 +1,7 @@
 import logging
-from datetime import datetime
-
 from celery import shared_task
 from django.utils import timezone
-
 from habits.models import Habit
-
-# from telegram_bot.sender import send_telegram_message
 from telegram_bot.demo_sender import send_telegram_message
 
 logger = logging.getLogger(__name__)

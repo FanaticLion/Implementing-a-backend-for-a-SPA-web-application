@@ -1,11 +1,10 @@
-from django.db.models import Q
 from rest_framework import permissions, viewsets
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
 from .models import Habit
-from .permissions import IsOwner, IsPublic
+from .permissions import IsOwner
 from .serializers import HabitListSerializer, HabitSerializer
 
 

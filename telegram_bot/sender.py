@@ -10,7 +10,7 @@ def send_telegram_message(chat_id, message):
     """Функция отправки сообщений - в разработке выводит в консоль"""
 
     # Режим разработки - выводим в консоль
-    print(f"🔔 TELEGRAM НАПОМИНАНИЕ")
+    print(f"🔔 TELEGRAM НАПОМИНАНИЕ для чата {chat_id}")
     print(f"   Чат ID: {chat_id}")
     print(f"   Сообщение: {message}")
     print(f"   {'=' * 50}")

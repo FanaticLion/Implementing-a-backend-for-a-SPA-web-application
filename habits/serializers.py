@@ -1,7 +1,5 @@
 from rest_framework import serializers
 
-from users.models import User
-
 from .models import Habit
 
 
@@ -30,7 +28,6 @@ class HabitSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         """Валидация данных на уровне сериализатора"""
-        errors = {}
 
         # Проверка: нельзя одновременно related_habit и reward
         if data.get("related_habit") and data.get("reward"):
