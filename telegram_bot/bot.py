@@ -1,6 +1,7 @@
-import os
-import logging
 import asyncio
+import logging
+import os
+
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
@@ -17,7 +18,10 @@ logger = logging.getLogger(__name__)
 class HabitTrackerBot:
     def __init__(self):
         # Проверяем что токен есть в настройках
-        if not hasattr(settings, 'TELEGRAM_BOT_TOKEN') or not settings.TELEGRAM_BOT_TOKEN:
+        if (
+            not hasattr(settings, "TELEGRAM_BOT_TOKEN")
+            or not settings.TELEGRAM_BOT_TOKEN
+        ):
             raise ValueError("TELEGRAM_BOT_TOKEN not configured in Django settings")
 
         self.token = settings.TELEGRAM_BOT_TOKEN
@@ -37,7 +41,7 @@ class HabitTrackerBot:
             f"Команды:\n"
             f"/help - показать справку\n"
             f"/myid - показать твой chat_id",
-            parse_mode='Markdown'
+            parse_mode="Markdown",
         )
 
     async def help_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -63,7 +67,7 @@ class HabitTrackerBot:
         await update.message.reply_text(
             f"Твой chat_id: `{chat_id}`\n\n"
             f"Скопируй этот номер и укажи его в своем профиле на сайте.",
-            parse_mode='Markdown'
+            parse_mode="Markdown",
         )
 
     def setup_handlers(self):

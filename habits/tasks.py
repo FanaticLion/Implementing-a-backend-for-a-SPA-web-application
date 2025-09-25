@@ -1,9 +1,13 @@
-from celery import shared_task
 import logging
-from django.utils import timezone
 from datetime import datetime
+
+from celery import shared_task
+from django.utils import timezone
+
 from habits.models import Habit
-from telegram_bot.sender import send_telegram_message
+
+# from telegram_bot.sender import send_telegram_message
+from telegram_bot.demo_sender import send_telegram_message
 
 logger = logging.getLogger(__name__)
 
@@ -18,8 +22,7 @@ def send_habit_reminders():
 
     # Находим привычки, которые нужно выполнить сейчас
     habits = Habit.objects.filter(
-        time__hour=current_time.hour,
-        time__minute=current_time.minute
+        time__hour=current_time.hour, time__minute=current_time.minute
     )
 
     for habit in habits:
@@ -34,10 +37,12 @@ def send_habit_reminder(habit_id):
     try:
         habit = Habit.objects.get(id=habit_id)
         if habit.user.telegram_chat_id:
-            message = f"🔔 **Напоминание о привычке!**\n\n" \
-                      f"**Привычка:** {habit.action}\n" \
-                      f"**Место:** {habit.place}\n" \
-                      f"**Время на выполнение:** {habit.time_to_complete} сек.\n\n"
+            message = (
+                f"🔔 **Напоминание о привычке!**\n\n"
+                f"**Привычка:** {habit.action}\n"
+                f"**Место:** {habit.place}\n"
+                f"**Время на выполнение:** {habit.time_to_complete} сек.\n\n"
+            )
 
             if habit.reward:
                 message += f"**Вознаграждение:** {habit.reward}\n\n"
